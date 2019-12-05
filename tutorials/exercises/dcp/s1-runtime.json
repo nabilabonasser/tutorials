@@ -1,0 +1,23 @@
+{
+  "target": "bmv2",
+  "p4info": "build/dcp.p4.p4info.txt",
+  "bmv2_json": "build/dcp.json",
+  "table_entries": [ 
+  	{
+  		"table": "MyIngress.forward",
+  		"match": {
+  			"hdr.ethernet.dstAddr": ["08:00:00:00:02:22"]
+  		},
+  		"action_name": "MyIngress.set_egress_spec",
+  		"action_params" : {"port": 2}
+  	},
+  	{
+  		"table": "MyIngress.forward",
+  		"match": {
+  			"hdr.ethernet.dstAddr": ["08:00:00:00:01:11"]
+  		},
+  		"action_name": "MyIngress.set_egress_spec",
+  		"action_params" : {"port": 1}
+  	}
+  ]
+}
