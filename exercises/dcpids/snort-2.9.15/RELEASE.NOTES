@@ -1,0 +1,17 @@
+2019-10-02 - Snort 2.9.15
+
+[*] New Additions
+
+ * Added new debugs to print detection, file_processing and Preproc time consumption info and verdict.
+
+ * Added support to detect new Korean file formats .egg and .alg in the file preprocessor.
+
+ * Added support to detect new RAR file-type in the file preprocessor.
+
+[*] Improvements / Fix
+
+ * Fix to generate ALERT if TEID value is zero in GTP v1 and v2 packets.
+
+ * Fix to whitelist ftp data sessions when no file policy exists.
+
+ * Fix RTF file magic to a more generic value to prevent evasions.

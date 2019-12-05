@@ -1,0 +1,42 @@
+{
+  "target": "bmv2",
+  "p4info": "build/dcpip.p4.p4info.txt",
+  "bmv2_json": "build/dcpip.json",
+  "table_entries": [ 
+  	{
+  		"table": "MyIngress.dcp_forward",
+  		"match": {
+  			"hdr.ethernet.dstAddr": ["08:00:00:00:02:22"]
+  		},
+  		"action_name": "MyIngress.set_egress_spec",
+  		"action_params" : {"port": 2}
+  	},
+  	{
+  		"table": "MyIngress.dcp_forward",
+  		"match": {
+  			"hdr.ethernet.dstAddr": ["08:00:00:00:01:11"]
+  		},
+  		"action_name": "MyIngress.set_egress_spec",
+  		"action_params" : {"port": 1}
+  	},
+  	{
+  		"table": "MyIngress.ipv4_lpm",
+      	"match": {
+        "hdr.ipv4.dstAddr": ["10.0.1.1", 32]
+      	},
+      	"action_name": "MyIngress.ipv4_forward",
+      	"action_params": {"dstAddr": "08:00:00:00:01:11","port": 1}
+  	},
+  	{
+  		"table": "MyIngress.ipv4_lpm",
+      	"match": {
+        	"hdr.ipv4.dstAddr": ["10.0.2.2", 32]
+      	},
+      	"action_name": "MyIngress.ipv4_forward",
+      	"action_params": {
+        	"dstAddr": "08:00:00:00:02:22",
+        	"port": 2
+      	}
+  	}
+  ]
+}
